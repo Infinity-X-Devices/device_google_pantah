@@ -89,7 +89,7 @@ function blob_fixup_dry() {
 
 function prepare_firmware() {
     if [ "${SRC}" != "adb" ]; then
-        bash "${ANDROID_ROOT}"/lineage/scripts/pixel/prepare-firmware.sh "${DEVICE}" "${SRC}"
+        bash "${ANDROID_ROOT}"/infinity/scripts/pixel/prepare-firmware.sh "${DEVICE}" "${SRC}"
     fi
 }
 

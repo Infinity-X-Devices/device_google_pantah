@@ -4,24 +4,30 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit some common Lineage stuff.
+# Inherit some common Infinity-X stuff
 TARGET_DISABLE_EPPE := true
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
+
+# Infinity-X Flags
+WITH_GMS := true
+INFINITY_BUILD_TYPE := OFFICIAL
+INFINITY_MAINTAINER := Pyrtle93
+TARGET_HAS_UDFPS := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_IS_PIXEL := true
+TARGET_EXCLUDES_AUDIOFX := true
+TARGET_EXCLUDES_VIA := true
 
 # Inherit device configuration
 $(call inherit-product, device/google/pantah/aosp_panther.mk)
-$(call inherit-product, device/google/gs201/lineage_common.mk)
+$(call inherit-product, device/google/gs201/infinity_common.mk)
 
-include device/google/pantah/panther/device-lineage.mk
+include device/google/pantah/panther/device-infinity.mk
 
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 7
-PRODUCT_NAME := lineage_panther
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2400
-TARGET_SCREEN_WIDTH := 1080
+PRODUCT_NAME := infinity_panther
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=panther \
