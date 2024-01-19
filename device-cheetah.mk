@@ -11,8 +11,8 @@ TARGET_KERNEL_DIR := device/google/$(TARGET_KERNEL_DEVICE)-kernels/$(TARGET_LINU
 TARGET_KERNEL_PLATFORM_SOURCE := google/gs-$(TARGET_LINUX_KERNEL_VERSION)
 
 DEVICE_PACKAGE_OVERLAYS += device/google/pantah/cheetah/overlay
-DEVICE_PACKAGE_OVERLAYS += device/google/pantah/cheetah/overlay-lineage
-DEVICE_PACKAGE_OVERLAYS += device/google/pantah/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += device/google/pantah/cheetah/overlay-infinity
+DEVICE_PACKAGE_OVERLAYS += device/google/pantah/overlay-infinity
 
 include device/google/gs201/device-shipping-common.mk
 
@@ -24,6 +24,15 @@ PRODUCT_PACKAGES += \
 # UWB
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.uwb.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.uwb.xml
+
+# Camera
+$(call inherit-product-if-exists, vendor/google/camera/config.mk)
+
+# Face unlock
+$(call inherit-product-if-exists, vendor/google/faceunlock/config.mk)
+
+# Pixel Parts
+$(call inherit-product-if-exists, packages/apps/PixelParts/device.mk)
 
 # Recovery files
 PRODUCT_COPY_FILES += \
